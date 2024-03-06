@@ -5,7 +5,6 @@
         #instalação da biblioteca: pip install pyautogui
 
 # Importando as bibliotecas
-from email.message import _PayloadType
 import pyautogui
 import time
 
@@ -53,30 +52,46 @@ print (tabela)
 
 # Passo 4: Cadastrar 1 produto
 
-# Acessar o campo e escrever Código do Produto
-pyautogui.press("tab")
-pyautogui.write("Codigo do Produto")
-# Acessar o campo e escrever Marca
-pyautogui.press("tab")
-pyautogui.write("Marca")
-# Acessar o campo e escrever Tipo
-pyautogui.press("tab")
-pyautogui.write("Tipo")
-# Acessar o campo e escrever Categoria
-pyautogui.press("tab")
-pyautogui.write("Categoria")
-# Acessar o campo e escrever Preço Unitário
-pyautogui.press("tab")
-pyautogui.write("Preco Unitario")
-# Acessar o campo e escrever Custo
-pyautogui.press("tab")
-pyautogui.write("Custo")
-# Acessar o campo e escrever Observação
-pyautogui.press("tab")
-pyautogui.write("Obs")
+# Cadastrando cada linha da tabela
+for linha in tabela.index:
 
-# Acessar o botão e enviar o cadastro
-pyautogui.press("tab")
-pyautogui.press("enter")
+    # Acessar o campo e escrever Código do Produto
+    pyautogui.click(x=567, y=287)
+    codigo = tabela.loc[linha, "codigo"]
+    pyautogui.write(str(codigo))
+    
+    # Acessar o campo e escrever Marca
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha,"marca"]))
+
+    # Acessar o campo e escrever Tipo
+    pyautogui.press("tab")
+    pyautogui.write(str(tabela.loc[linha,"tipo"]))
+
+    # Acessar o campo e escrever Categoria
+    pyautogui.press("tab")
+    categoria = tabela.loc[linha,"categoria"]    
+    pyautogui.write(str(categoria))
+
+    # Acessar o campo e escrever Preço Unitário
+    pyautogui.press("tab")   
+    pyautogui.write(str(tabela.loc[linha,"preco_unitario"]))
+
+    # Acessar o campo e escrever Custo
+    pyautogui.press("tab")   
+    pyautogui.write(str(tabela.loc[linha,"custo"]))
+
+    # Acessar o campo e escrever Observação
+    pyautogui.press("tab")
+    obs = tabela.loc[linha,"obs"]
+    # Verificando se o campo está vazio
+    if not pandas.isna:
+        pyautogui.write(str(obs))
+
+    # Acessar o botão e enviar o cadastro
+    pyautogui.press("tab")
+    pyautogui.press("enter")
+    # pyautogui.press("PgUp")
+    pyautogui.scroll(10000)
 
 # Passo 5: Repetir o processo de cadastro até acabar a base de dados
